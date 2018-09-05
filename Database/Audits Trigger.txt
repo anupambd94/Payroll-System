@@ -1,0 +1,9 @@
+CREATE sequence audits_auto_incrmnt start with 1
+increment by 1;
+
+CREATE OR REPLACE TRIGGER audits_trigger
+BEFORE INSERT ON audits
+FOR EACH ROW
+BEGIN
+:new.id := audits_auto_incrmnt.nextval;
+END;

@@ -1,0 +1,9 @@
+CREATE sequence deduction_auto_incrmnt start with 1
+increment by 1;
+
+CREATE OR REPLACE TRIGGER deduction_trigger
+BEFORE INSERT ON deductions
+FOR EACH ROW
+BEGIN
+:new.id := deduction_auto_incrmnt.nextval;
+END;

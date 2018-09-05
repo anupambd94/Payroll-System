@@ -1,0 +1,9 @@
+CREATE sequence allowance_auto_incrmnt start with 1
+increment by 1;
+
+CREATE OR REPLACE TRIGGER allowance_trigger
+BEFORE INSERT ON allowance
+FOR EACH ROW
+BEGIN
+:new.id := allowance_auto_incrmnt.nextval;
+END;
